@@ -1,4 +1,4 @@
-# NNNN — {{Title}}   *(fleet kit template — install as `specs/NNNN-slug/spec.md`)*
+# NNNN — {{Title}}   *(AFLEK template — install as `specs/NNNN-slug/spec.md`)*
 
 <!--
   TEMPLATE NOTES — delete this comment block when instantiating.

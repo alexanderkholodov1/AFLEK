@@ -1,4 +1,4 @@
-# Changelog fragments   *(fleet kit template — install as `changelog.d/README.md`)*
+# Changelog fragments   *(AFLEK template — install as `changelog.d/README.md`)*
 
 <!-- No placeholders. Add a `.gitkeep` next to this file so the directory survives empty. -->
 

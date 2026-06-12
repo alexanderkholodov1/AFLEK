@@ -1,8 +1,8 @@
 # Doctrine — the seven rules
 
 > Each rule states the law, the reasoning behind it, and the **failure it prevents** — a real
-> incident, not a hypothetical. The casebook is the first adopting project (MunHub, a
-> cosmic-ray observatory platform; project audit of 2026-06-12). When a rule costs you
+> incident, not a hypothetical. The casebook is the kit's first adopting project (a public
+> scientific monorepo; project audit of June 2026). When a rule costs you
 > something and you are tempted to waive it, reread the failure first.
 >
 > Doctrine changes are PRs against this file with a new incident or a new argument — never
@@ -21,7 +21,7 @@ the operator's adjutant. Never fan out parallel agent processes on the operator'
 hardware (not the operator's laptop), and a uniform feedback artifact: the PR. A local swarm
 gives none of these and competes with the operator for CPU, RAM, and attention.
 
-**Failure it prevents.** *MunHub, June 2026.* The fleet design ran multiple provider CLIs as
+**Failure it prevents.** *First adopter, June 2026.* AFLEK design ran multiple provider CLIs as
 parallel local processes. The result: a degraded workstation, no visible progress surface,
 and work that died with the terminal. The fix was doctrinal, not architectural — move
 execution to cloud surfaces and make the PR queue + status board the only feedback channels.
@@ -36,7 +36,7 @@ scan) gates the merge mechanically.
 provider-agnostic by construction. Small agent commits on branches preserve the audit trail;
 protection plus CI means trust is enforced, not assumed.
 
-**Failure it prevents.** *MunHub, defect audit §2.2.* An earlier "agents never commit —
+**Failure it prevents.** *First adopter, defect audit.* An earlier "agents never commit —
 leave changes for the human" policy (D30) discarded the audit trail, left work stranded in
 working trees, and survived in sixteen stale GitHub issues that contradicted the active
 policy — new agents read the wrong law. Industry practice (2026) is the opposite of D30:
@@ -72,7 +72,7 @@ not the model.**
 model. Well-formed WPs make routing a cost decision instead of a gamble, and make failure
 attributable: either the WP was wrong or the executor ignored it.
 
-**Failure it prevents.** *MunHub audit §2.2, defect 8.* An architecture decision record was
+**Failure it prevents.** *First adopter audit, defect 8.* An architecture decision record was
 delegated without a decision contract and came back ending in a question to the maintainer —
 work that consumed a session and still required the expensive resource (human judgment) it
 was supposed to package. Underspecified tasks silently escalate themselves to the frontier
@@ -90,7 +90,7 @@ documentation-matrix rule).
 diverge independently, and each new agent session is initialized by whichever stale copy its
 harness happens to read.
 
-**Failure it prevents.** *MunHub audit §2.2, defects 1–2.* The repo's `CLAUDE.md` still
+**Failure it prevents.** *First adopter audit, defects 1–2.* The repo's `CLAUDE.md` still
 described a dead previous-generation architecture ("no build step, no test suite") while the
 codebase was a pnpm monorepo with CI; `AGENTS.md` was in the wrong language for a public repo
 and contradicted itself on commit policy between two of its own sections. Every new session
@@ -105,7 +105,7 @@ in a conversation. A future session must be able to resume from the repo alone.
 **Rationale.** Chats expire, get summarized, or belong to one provider. The repo is the only
 memory all providers, all sessions, and the human share.
 
-**Failure it prevents.** *MunHub audit §2.2, defect 10.* The status board went five days
+**Failure it prevents.** *First adopter audit, defect 10.* The status board went five days
 stale and did not know two foundation PRs were open — the actual phase blocker was sitting
 invisible in a merge queue while plans lived in chat histories nobody could query. The audit
 rule since: the board is updated at the close of every wave, and "the repository is the
@@ -122,7 +122,7 @@ Defense-in-depth per PR: CI + secret scan + coverage gate + at least two automat
 spent on contract design are worse than wasted. Quality: models share blind spots with
 themselves; an ensemble across providers catches what self-review structurally cannot.
 
-**Failure it prevents.** *MunHub, ongoing.* Single-reviewer setups silently degrade when the
+**Failure it prevents.** *First adopter, ongoing.* Single-reviewer setups silently degrade when the
 one reviewer is misconfigured or its billing lapses — exactly what happened when one paid
 review bot was turned off for cost (Cursor Bugbot, 2026-06-12) and the review ensemble had
 to absorb the loss without dropping below two reviewers. Cross-provider review also caught

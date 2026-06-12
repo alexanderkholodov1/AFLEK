@@ -1,4 +1,4 @@
-# CLAUDE.md   *(fleet kit shim template — Claude Code)*
+# CLAUDE.md   *(AFLEK shim template — Claude Code)*
 
 <!--
   TEMPLATE PLACEHOLDERS — replace all {{…}} and delete this comment block.

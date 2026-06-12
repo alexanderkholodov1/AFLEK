@@ -1,5 +1,5 @@
 <!--
-  fleet kit template — install as .github/pull_request_template.md
+  AFLEK template — install as .github/pull_request_template.md
   PLACEHOLDERS: {{PROJECT}}, {{MAINTAINER}}, {{CI_COMMANDS}}, {{REVIEWERS_LINE}} (who/what
   reviews automatically), plus the domain-checklist lines marked "DOMAIN:" — replace them with
   your project's non-negotiables (from the AGENTS.md project-specific guardrails) or delete.

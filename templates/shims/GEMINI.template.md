@@ -1,4 +1,4 @@
-# GEMINI.md   *(fleet kit shim template — Gemini CLI)*
+# GEMINI.md   *(AFLEK shim template — Gemini CLI)*
 
 <!--
   TEMPLATE PLACEHOLDERS — replace all {{…}} and delete this comment block.

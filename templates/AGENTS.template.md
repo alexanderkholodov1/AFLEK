@@ -1,8 +1,8 @@
-# AGENTS.md — Agent entry point (START HERE)   *(fleet kit template)*
+# AGENTS.md — Agent entry point (START HERE)   *(AFLEK template)*
 
 <!--
   TEMPLATE PLACEHOLDERS — replace all {{…}} and delete this comment block.
-  {{PROJECT}}            product name, e.g. "MunHub Lab v6.0"
+  {{PROJECT}}            product name, e.g. "Atlas Platform v2.0"
   {{PROJECT_SUMMARY}}    1–3 sentences: what is being built and for whom
   {{MAINTAINER}}         the human with merge authority
   {{STATE}}              current phase, what's merged, what's in flight (keep this LIVE)
@@ -80,8 +80,8 @@ and the maintainer.
 ## Project-specific guardrails
 
 <!-- The kit owns structure; the project owns truth. Put domain non-negotiables here, e.g.
-     MunHub: scientific honesty (single-SiPM events are "charged-particle rate", never "muons");
-     per-minute values are time-averages; provider-agnostic data layer only. -->
+     a research platform: scientific honesty (never label unverified events as confirmed
+     detections); aggregates must stay statistically comparable; data-layer abstraction only. -->
 {{DOMAIN_GUARDRAILS}}
 
 ## The first vertical slice
@@ -91,5 +91,5 @@ and the maintainer.
 ## How to pick your first task
 
 1. Take your assigned work package, or the highest-priority unblocked item on the backlog.
-2. No spec/WP for it? Write one (templates in the fleet kit) → human gate → build.
+2. No spec/WP for it? Write one (templates in AFLEK) → human gate → build.
 3. Verify against acceptance criteria, then: branch → commit → push → PR + Stage Report → stop.
