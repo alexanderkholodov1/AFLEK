@@ -3,14 +3,14 @@
 > Updated at the close of every build wave. Plan of record:
 > [`IMPLEMENTATION-PLAN.md`](IMPLEMENTATION-PLAN.md) (FWP-01…09).
 
-_Last updated: 2026-06-12 (FWP-01 wave)_
+_Last updated: 2026-06-12 (FWP-01/02 wave)_
 
 ## Build progress (v0.1)
 
 | FWP | Deliverable | Status | PR |
 |---|---|---|---|
 | 01 | Bootstrap: LICENSE, FLEET-VERSION, doctrine, README quickstart | 🟡 PR open | #1 |
-| 02 | `templates/AGENTS.template.md` + 4 shims | ⏳ next | — |
+| 02 | `templates/AGENTS.template.md` + 4 shims | 🟡 PR open (stacked on 01) | #2 |
 | 03 | CONTRIBUTING / changelog.d / STATUS / spec templates | ⏳ | — |
 | 04 | `templates/github/*` (CI, PR template, CODEOWNERS) | ⏳ | — |
 | 05 | `personas/*` (4 reviewer personas, ECC-derived, attributed) | ⏳ | — |
