@@ -14,7 +14,7 @@ _Last updated: 2026-06-12 (FWP-01…04 wave)_
 | 03 | CONTRIBUTING / changelog.d / STATUS / spec templates | 🟡 PR open (stacked on 02) | #3 |
 | 04 | `templates/github/*` (CI, PR template, CODEOWNERS) | 🟡 PR open (stacked on 03) | #4 |
 | 05 | `personas/*` (4 reviewer personas, ECC-derived, attributed) | 🟡 PR open | #5 |
-| 06 | `adapters/*` (5 providers, last-verified dates) | ⏳ | — |
+| 06 | `adapters/*` (5 providers, last-verified dates) | 🟡 PR open (stacked on 05) | #6 |
 | 07 | `playbooks/*` (6 playbooks; 2 already seeded) | ⏳ | — |
 | 08 | MunHub adoption pass (runs in MunHub) | ⏳ after 09 | — |
 | 09 | Tag `v0.1.0` + repo description/topics | ⏳ | — |
