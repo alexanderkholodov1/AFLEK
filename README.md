@@ -1,9 +1,26 @@
 # The Fleet — charter
 
-> **Status: seeded, pre-v0.1.** This repository is the home of the fleet kit. Seeded 2026-06-12
-> from MunHub's incubation folder (`fleet/` @ `b58b976`); that copy is removed when MunHub runs
-> the adoption pass (FWP-08). Build the kit by executing FWP-01…9 in
-> [`docs/IMPLEMENTATION-PLAN.md`](docs/IMPLEMENTATION-PLAN.md).
+> **Status: building v0.1.** Seeded 2026-06-12 from MunHub's incubation folder (`fleet/` @
+> `b58b976`); that copy is removed when MunHub runs the adoption pass (FWP-08). Build progress:
+> [`docs/STATUS.md`](docs/STATUS.md); plan: [`docs/IMPLEMENTATION-PLAN.md`](docs/IMPLEMENTATION-PLAN.md).
+
+## Quickstart — adopt the fleet in a repo
+
+1. **Pin a kit version.** Copy `FLEET-VERSION` from a tagged release of this repo into your
+   repo's root. Upgrades are deliberate (see `playbooks/upgrade-kit-version.md`), never implicit.
+2. **Instantiate the contract.** Fill the `{{PLACEHOLDERS}}` in `templates/AGENTS.template.md`
+   → your repo's `AGENTS.md`; instantiate the four shims from `templates/shims/` so every
+   harness points at it. Add your project's domain guardrails in the marked section — they
+   live in your repo, not in the kit.
+3. **Install the gates.** Instantiate `templates/github/` (CI + secret scan, PR template,
+   CODEOWNERS), `templates/CONTRIBUTING.template.md`, `templates/STATUS.template.md`, and the
+   `changelog.d/` pattern. Protect `main`: PR + green CI required; only the human merges.
+4. **Run waves.** Cut work into work packages (`templates/work-package.md`), route them to
+   cloud agents per `adapters/`, review per `personas/`, and close every wave by updating the
+   status board (`playbooks/run-a-wave.md`).
+
+New empty repo? Start at `playbooks/bootstrap-new-project.md`. Existing repo?
+`playbooks/adopt-existing-repo.md`.
 
 ## Mission
 
@@ -13,6 +30,9 @@ structure, quality gates, work-packaging format, and provider adapters — witho
 machinery every time. MunHub is the first customer, not the owner.
 
 ## Doctrine (lessons already paid for)
+
+> Summary only — [`doctrine/DOCTRINE.md`](doctrine/DOCTRINE.md) is authoritative: each rule
+> with rationale and the concrete failure it prevents.
 
 1. **Cloud-first execution.** Implementer agents run on cloud surfaces (Claude Code web/cloud
    sessions & Routines, Cursor Cloud Agents, Copilot coding agent, GitHub-Actions agents like
