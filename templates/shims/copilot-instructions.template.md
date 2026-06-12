@@ -1,4 +1,4 @@
-# GitHub Copilot — {{PROJECT}}   *(fleet kit shim template)*
+# GitHub Copilot — {{PROJECT}}   *(AFLEK shim template)*
 
 <!--
   Install as: .github/copilot-instructions.md

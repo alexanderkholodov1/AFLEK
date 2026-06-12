@@ -1,4 +1,4 @@
-# Contributing to {{PROJECT}}   *(fleet kit template)*
+# Contributing to {{PROJECT}}   *(AFLEK template)*
 
 <!--
   TEMPLATE PLACEHOLDERS — replace all {{…}} and delete this comment block.

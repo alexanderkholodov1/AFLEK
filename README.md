@@ -1,17 +1,22 @@
-# The Fleet — charter
+# AFLEK — Agent Fleet Kit
 
-> **Status: building v0.1.** Seeded 2026-06-12 from MunHub's incubation folder (`fleet/` @
-> `b58b976`); that copy is removed when MunHub runs the adoption pass (FWP-08). Build progress:
-> [`docs/STATUS.md`](docs/STATUS.md); plan: [`docs/IMPLEMENTATION-PLAN.md`](docs/IMPLEMENTATION-PLAN.md).
+> A **project-agnostic, provider-agnostic agent fleet kit**: drop it into any repository — new
+> or existing, web, full-stack, research, anything — and get a working multi-agent development
+> system: command structure, quality gates, work-packaging format, reviewer personas, and
+> provider adapters, without rebuilding the machinery every time. Extracted from a real
+> production project (its first adopter), hardened by the failures recorded in
+> [`doctrine/DOCTRINE.md`](doctrine/DOCTRINE.md).
 
-## Quickstart — adopt the fleet in a repo
+**Status:** v0.1 complete — see [`docs/STATUS.md`](docs/STATUS.md).
+
+## Quickstart — adopt AFLEK in a repo
 
 1. **Pin a kit version.** Copy `FLEET-VERSION` from a tagged release of this repo into your
    repo's root. Upgrades are deliberate (see `playbooks/upgrade-kit-version.md`), never implicit.
 2. **Instantiate the contract.** Fill the `{{PLACEHOLDERS}}` in `templates/AGENTS.template.md`
-   → your repo's `AGENTS.md`; instantiate the four shims from `templates/shims/` so every
-   harness points at it. Add your project's domain guardrails in the marked section — they
-   live in your repo, not in the kit.
+   → your repo's `AGENTS.md`; instantiate the shims from `templates/shims/` so every harness
+   points at it. Add your project's domain guardrails in the marked section — they live in
+   your repo, not in the kit.
 3. **Install the gates.** Instantiate `templates/github/` (CI + secret scan, PR template,
    CODEOWNERS), `templates/CONTRIBUTING.template.md`, `templates/STATUS.template.md`, and the
    `changelog.d/` pattern. Protect `main`: PR + green CI required; only the human merges.
@@ -22,77 +27,71 @@
 New empty repo? Start at `playbooks/bootstrap-new-project.md`. Existing repo?
 `playbooks/adopt-existing-repo.md`.
 
-## Mission
+## Any provider, by construction
 
-A **project-agnostic, provider-agnostic agent fleet kit**: drop it into any new repository (web,
-full-stack, software, research) and get a working multi-agent development system — command
-structure, quality gates, work-packaging format, and provider adapters — without rebuilding the
-machinery every time. MunHub is the first customer, not the owner.
+AFLEK does not depend on any vendor's agent. Three mechanisms make it work with **everything**:
+
+- **The canonical contract is `AGENTS.md`** — the open standard (Linux Foundation, read
+  natively by Codex, Copilot, Cursor, Gemini CLI, Aider, Windsurf, Zed, and more). Harnesses
+  that read their own file instead get a thin shim pointing at it (`templates/shims/`); sync
+  tools like `intellectronica/ruler` or `agent_sync` can generate shims for a dozen harnesses
+  from one source.
+- **The deliverable is a PR gated by CI** — the one artifact every agent on earth can emit.
+  No runtime integration is ever required.
+- **New providers are an adapter file away** — `adapters/TEMPLATE.md` adds any current or
+  future provider in minutes. Shipped adapters: Claude Code, Cursor, Gemini, Copilot, Codex.
 
 ## Doctrine (lessons already paid for)
 
 > Summary only — [`doctrine/DOCTRINE.md`](doctrine/DOCTRINE.md) is authoritative: each rule
 > with rationale and the concrete failure it prevents.
 
-1. **Cloud-first execution.** Implementer agents run on cloud surfaces (Claude Code web/cloud
-   sessions & Routines, Cursor Cloud Agents, Copilot coding agent, GitHub-Actions agents like
-   `anthropics/claude-code-action`) — never as parallel processes on the operator's machine.
-   Local CLIs are for single interactive sessions only.
+1. **Cloud-first execution.** Implementer agents run on cloud surfaces — never as parallel
+   processes on the operator's machine. Local CLIs are for single interactive sessions only.
 2. **The PR is the deliverable; CI is the referee.** Agents commit to feature branches, open
-   PRs; protected `main`; only the human merges. Provider-agnostic by construction — every
-   vendor's agent can emit a PR.
-3. **No gateway products in the loop.** Personal-assistant gateways (OpenClaw, Hermes Agent)
-   are out of scope: wrong genus (chat assistants, not build orchestrators) and, for OpenClaw,
-   a disqualifying security record. Re-evaluate the landscape quarterly.
-4. **The work package is the unit of delegation.** A WP contains: goal, the ONLY files/context
-   needed, constraints, acceptance criteria (mechanically checkable where possible), docs to
-   update, and a suggested executor tier. If a mid-tier model can't execute a WP alone, the WP
-   is underspecified — fix the WP, not the model.
-5. **One canonical contract, thin adapters.** A single `AGENTS.md` is the authority; per-harness
-   shims (`CLAUDE.md`, `GEMINI.md`, `.cursor/rules/*.mdc`, `.github/copilot-instructions.md`)
-   are pointers that must never drift. (Pattern generalized from MunHub; equivalent to ECC's
-   `.agents/` + adapter-contract architecture — see `everything-claude-code`,
-   `docs/SESSION-ADAPTER-CONTRACT.md`, MIT.)
+   PRs; protected `main`; only the human merges.
+3. **No gateway products in the loop.** Personal-assistant gateways are out of scope: wrong
+   genus (chat assistants, not build orchestrators). Re-evaluate the landscape quarterly.
+4. **The work package is the unit of delegation.** If a mid-tier model can't execute a WP
+   alone, the WP is underspecified — fix the WP, not the model.
+5. **One canonical contract, thin shims.** A single `AGENTS.md` is the authority; per-harness
+   shims are pointers that must never drift.
 6. **No chat-dependent state.** Sessions end with pushed branches, PR stage reports, and a
-   status board update. Any plan of record lives in the repo.
-7. **Routing by strength, reviewing across providers.** Frontier model designs contracts and
-   reviews; mid-tier implements; cheap tier does mechanical bulk; a *different* provider reviews
-   (ensemble catches more than self-review). Defense-in-depth gates per PR: CI + secret scan +
-   coverage + two automated reviewers + persona reviews where relevant.
+   status-board update. Any plan of record lives in the repo.
+7. **Routing by strength, reviewing across providers.** Frontier designs and reviews; mid-tier
+   implements; cheap tier does bulk; a *different* provider reviews each PR.
 
-## v0.1 contents (extraction targets)
+## Self-improvement (the kit learns)
 
-| Asset | Source to generalize |
-|---|---|
-| `AGENTS.md` template + shim set + drift rule | MunHub `AGENTS.md` (2026-06-12 revision) and its shims |
-| Documentation matrix ("done includes docs") | `AGENTS.md` guardrail 10 |
-| Commit/PR style standard (no process narration) | MunHub `CONTRIBUTING.md` D44 section |
-| Changelog-fragments pattern (parallel-PR safe) | `changelog.d/` |
-| CI quality-gate workflow + secret scan | `.github/workflows/ci.yml`, `.gitleaks.toml` |
-| PR template + CODEOWNERS + label taxonomy | `.github/` |
-| Work-package format + status board template | `docs/audit/2026-06-12-STATE-OF-PROJECT.md` §7, `docs/STATUS.md` |
-| Command structure (operator → adjutant → supervisors → workers) | `planning/20-FLEET-COMMAND-AND-ADJUTANT.md` (translate + de-project-ify) |
-| Routing matrix + wave/lane/contracts-first scheduling | `planning/18-AGENT-FLEET-ORCHESTRATION.md` §2–§3, §7–§8bis |
-| Reviewer personas (code, security, silent-failure) | adapted from `everything-claude-code` (pin commit, MIT attribution) |
-| Secrets pattern (`private/` + env loader + committed example) | `infra/fleet/` |
+AFLEK improves the way it does everything else — **through PRs, not through a runtime**:
+`playbooks/learning-loop.md` turns wave retrospectives into concrete edits to doctrine,
+templates, personas, and playbooks. Adopting projects learn privately in their own fork/layer
+and upstream the generalizable lessons. See `docs/RESEARCH-LANDSCAPE.md` for how this compares
+to runtime-based self-learning systems.
 
-## Repo skeleton (target)
+## Repo map
 
 ```
-fleet/
-├─ README.md            mission + quickstart ("adopt the fleet in an existing repo")
-├─ doctrine/            the 7 rules above, each with rationale
-├─ templates/           AGENTS.md, shims, CONTRIBUTING, PR template, CI workflows,
+aflek/
+├─ README.md            this charter + quickstart
+├─ FLEET-VERSION        the kit's own version (SemVer; adopters pin it)
+├─ doctrine/            the 7 rules, each with rationale + the failure it prevents
+├─ templates/           AGENTS.md contract, shims, CONTRIBUTING, PR template, CI workflow,
 │                       changelog.d, STATUS board, work-package + spec templates
-├─ personas/            reviewer/persona definitions (canonical, harness-neutral)
-├─ adapters/            claude-code/, cursor/, gemini/, copilot/, codex/ — how each
-│                       harness consumes the canonical contract
-└─ playbooks/           bootstrap-new-project, adopt-in-existing-repo, run-a-wave,
-                        phase-audit, incident (agent went rogue / broke main)
+├─ personas/            reviewer personas (code, security, silent-failure, docs) — harness-neutral
+├─ adapters/            per-provider operating notes + TEMPLATE.md to add any new one
+├─ playbooks/           bootstrap, adopt-existing-repo, run-a-wave, phase-audit,
+│                       learning-loop, upgrade-kit-version, incident
+└─ docs/                status board, build history, research landscape
 ```
 
 ## Explicit non-goals
 
-- Building an orchestration runtime/daemon. The vendors' cloud surfaces are the runtime; the
-  fleet kit is contracts, templates, and playbooks — the part that survives vendor churn.
-- Tracking every new agent tool. Quarterly landscape review, adopt only what removes a step.
+- Building an orchestration runtime/daemon. The vendors' cloud surfaces are the runtime; AFLEK
+  is contracts, templates, and playbooks — the part that survives vendor churn.
+- Tracking every new agent tool. Quarterly landscape review; adopt only what removes a step.
+
+## License
+
+MIT. Reviewer personas adapted from `everything-claude-code` (MIT) carry attribution headers
+with the pinned source commit.

@@ -4,7 +4,7 @@ description: Audits a PR (or the whole repo) for documentation-matrix compliance
 ---
 
 <!--
-  Original to the fleet kit; informed by `everything-claude-code` (MIT) `agents/doc-updater.md`
+  Original to AFLEK; informed by `everything-claude-code` (MIT) `agents/doc-updater.md`
   @ commit 5b173d2e6c11b976a0f13b2f59125e08956c1d47 and by the first adopter's audit
   (entry-point drift casebook — see doctrine rules 5 and 6).
 -->

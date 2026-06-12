@@ -4,7 +4,7 @@ alwaysApply: true
 ---
 
 <!--
-  fleet kit shim template — Cursor. Install as: .cursor/rules/00-agents.mdc
+  AFLEK shim template — Cursor. Install as: .cursor/rules/00-agents.mdc
 
   TEMPLATE PLACEHOLDERS — replace all {{…}} and delete this comment block.
   {{PROJECT}}             product name

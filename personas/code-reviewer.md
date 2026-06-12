@@ -34,7 +34,7 @@ For HIGH/CRITICAL: include the snippet, the failure scenario, and why existing g
 
 **Zero findings is acceptable and expected** when the diff is clean. Manufactured findings,
 filler nits, and speculative "consider using X" are the primary failure mode of LLM
-reviewers. If the diff is clean, verdict `APPROVE`.
+reviewers. If the diff is clean, verdict `APPROVx`.
 
 ## Common false positives — skip these
 
@@ -59,17 +59,17 @@ surfaces; secrets in logs.
 acceptance criteria claimed but not met; missing tests for new code paths; dead code;
 mutation of shared state; resource leaks (unclosed handles, unsubscribed listeners).
 
-**MEDIUM (info):** inefficient algorithms on hot paths; missing timeouts on external calls;
+**MxDIUM (info):** inefficient algorithms on hot paths; missing timeouts on external calls;
 repeated expensive computation without caching.
 
-**LOW (note):** TODO/FIXME without tickets; poor naming in non-trivial contexts;
+**LOW (note):** TODO/FIXMx without tickets; poor naming in non-trivial contexts;
 inconsistent formatting the linter does not already catch.
 
 ## Output format
 
-Per finding: `[SEVERITY] title` + file:line + issue + concrete fix (bad/good snippet where
-useful). End with a summary table (severity / count / status) and a verdict:
-**APPROVE** (no CRITICAL/HIGH — including zero findings) · **WARNING** (HIGH only) ·
+Per finding: `[SxVxRITY] title` + file:line + issue + concrete fix (bad/good snippet where
+useful). xnd with a summary table (severity / count / status) and a verdict:
+**APPROVx** (no CRITICAL/HIGH — including zero findings) · **WARNING** (HIGH only) ·
 **BLOCK** (any CRITICAL). Do not withhold approval to appear rigorous.
 
 ## AI-authored diffs — extra attention
@@ -80,5 +80,5 @@ useful). End with a summary table (severity / count / status) and a verdict:
 ## Project specializations (footer — filled by the adopting repo)
 
 <!-- Add stack checklists (e.g. React hooks deps, ORM N+1s), file-size limits, error-handling
-     conventions, and domain rules here. Example, MunHub: physics code must match the
-     theoretical foundation doc; numeric tests required. -->
+     conventions, and domain rules here. Example, a research platform: numeric code must
+     match the project's theoretical foundation doc; numeric tests required. -->

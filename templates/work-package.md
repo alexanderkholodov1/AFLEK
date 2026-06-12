@@ -1,6 +1,6 @@
 # Work package template
 
-> The work package (WP) is the fleet's unit of delegation (doctrine rule 4). A WP is **complete**
+> The work package (WP) is AFLEK's unit of delegation (doctrine rule 4). A WP is **complete**
 > when a mid-tier model, given ONLY this document and the files it lists, can deliver the PR
 > without asking questions. If it can't, the WP is underspecified — fix the WP, not the model.
 > Keep the whole WP under ~60 lines; if it won't fit, split it.

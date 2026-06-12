@@ -1,4 +1,4 @@
-# {{PROJECT}} — Status dashboard   *(fleet kit template — install as `docs/STATUS.md`)*
+# {{PROJECT}} — Status dashboard   *(AFLEK template — install as `docs/STATUS.md`)*
 
 <!--
   TEMPLATE PLACEHOLDERS — replace all {{…}} and delete this comment block.

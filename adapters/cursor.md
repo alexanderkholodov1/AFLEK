@@ -8,7 +8,7 @@
 | Surface | Use for |
 |---|---|
 | **Cloud Agents** (cursor.com dashboard / IDE) | implementer WPs in the cloud — the doctrine-1 surface |
-| **IDE (local)** | the operator's own editing; not an agent execution surface for the fleet |
+| **IDE (local)** | the operator's own editing; not an agent execution surface for AFLEK |
 | **Bugbot** (PR review bot) | automated PR review — see billing caution |
 
 ## How to start a task

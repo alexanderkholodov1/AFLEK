@@ -1,7 +1,7 @@
-# Playbook — adopt the fleet in an existing repository
+# Playbook — adopt AFLEK in an existing repository
 
 > Retrofit, not greenfield (for an empty repo use `bootstrap-new-project.md`). The worked
-> example throughout is the first adopter: **MunHub**, a public scientific monorepo that
+> example throughout is the kit's first adopter, a public scientific monorepo that
 > adopted the kit after a project audit found entry-point drift, a stale issue queue, and
 > a local-execution fleet design. Time budget: under an hour of orchestrator work + one
 > maintainer review pass.
@@ -9,7 +9,7 @@
 ## Procedure
 
 1. **Audit first.** Run `phase-audit.md` (or at minimum its entry-point truth test) on the
-   repo as it is. You cannot retrofit a contract onto entry points that lie. *(MunHub: the
+   repo as it is. You cannot retrofit a contract onto entry points that lie. *(First adopter: the
    audit found `CLAUDE.md` describing a dead architecture and a Spanish `AGENTS.md`
    contradicting itself on commit policy — both had to be fixed before adoption meant
    anything.)*
@@ -17,7 +17,7 @@
    root. Record the adoption in the repo's decision log if it has one.
 3. **Instantiate the canonical contract.** Fill `templates/AGENTS.template.md` →
    `AGENTS.md`. The two-layer rule (FD5): structural rules come from the template; the
-   repo's domain truth goes ONLY in the "project-specific guardrails" section. *(MunHub:
+   repo's domain truth goes ONLY in the "project-specific guardrails" section. *(First adopter:
    scientific honesty, averages-not-sums, provider-agnostic data layer.)*
 4. **Instantiate the four shims** from `templates/shims/` (`CLAUDE.md`, `GEMINI.md`,
    `.cursor/rules/00-agents.mdc`, `.github/copilot-instructions.md`). If the repo already
@@ -30,7 +30,7 @@
    secret scan + CI as required checks.
 6. **Sweep the stale-policy surfaces.** Old issues, READMEs, wikis, and templates that
    embed superseded process rules now contradict `AGENTS.md`. Close/re-issue or edit them
-   — agents read issues as law. *(MunHub: sixteen issues carried a dead "agents never
+   — agents read issues as law. *(First adopter: sixteen issues carried a dead "agents never
    commit" policy.)*
 7. **Install personas and adapters.** Copy the `personas/` you will use into the harness's
    agent directory (e.g. `.claude/agents/`), fill each "project specializations" footer;
