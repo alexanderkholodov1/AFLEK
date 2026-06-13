@@ -81,8 +81,10 @@ aflek/
 ├─ personas/            reviewer personas (code, security, silent-failure, docs) — harness-neutral
 ├─ adapters/            per-provider operating notes + TEMPLATE.md to add any new one
 ├─ playbooks/           bootstrap, adopt-existing-repo, compose-fleet, run-a-wave,
-│                       phase-audit, learning-loop, incident-log, upgrade-kit-version, incident
-├─ tools/               fleet-status.ps1 — the live visibility board (roster health, PRs, quota)
+│                       sync-and-update, phase-audit, learning-loop, incident-log,
+│                       upgrade-kit-version, incident
+├─ tools/               aflek-sync.ps1 (keeps adopters in sync with the kit) ·
+│                       fleet-status.ps1 (live visibility board: roster, PRs, quota)
 └─ docs/                status board, build history, research landscape
 ```
 
