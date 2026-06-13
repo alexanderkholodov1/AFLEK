@@ -13,8 +13,18 @@
 
 ## How to start a task
 
-Cloud Agent: from the dashboard or IDE, point it at the repo, give it the work package
-text, one spec per branch/PR. It commits to a branch and opens the PR itself.
+**Cloud Agent via the REST API (the AFLEK way — no manual app interaction).** The orchestrator
+launches and monitors Cursor Cloud Agents programmatically against `https://api.cursor.com`:
+
+- **Auth: Bearer, not Basic.** `Authorization: Bearer $CURSOR_API_KEY`. (HTTP Basic returns
+  `401 Invalid User API Key` — a wiring bug that masked the API as "unavailable"; verified
+  2026-06-12 the same key works on Bearer with HTTP 200.)
+- `GET /v0/agents` lists agents; `POST /v0/agents` launches one with the work-package text and
+  the target repo; one spec per branch/PR. The agent commits to a branch and opens the PR itself.
+- Poll `GET /v0/agents/{id}` for status and surface it on the status board.
+
+The dashboard/IDE stay available for the operator's own editing, but **fleet dispatch goes through
+the API** so every executor obeys the same orchestration surface — no agent runs "off to the side."
 
 ## Shim wiring
 

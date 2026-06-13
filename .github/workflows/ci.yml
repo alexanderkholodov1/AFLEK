@@ -1,0 +1,46 @@
+name: aflek-ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate-doctrine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint PowerShell tools (PSScriptAnalyzer)
+        shell: pwsh
+        run: |
+          Set-PSRepository PSGallery -InstallationPolicy Trusted
+          Install-Module PSScriptAnalyzer -Force -Scope CurrentUser
+          $issues = Get-ChildItem tools -Filter *.ps1 | ForEach-Object {
+            Invoke-ScriptAnalyzer -Path $_.FullName -Severity Error
+          }
+          if ($issues) { $issues | Format-Table -AutoSize | Out-String | Write-Host; throw "PSScriptAnalyzer found $($issues.Count) error(s)" }
+          Write-Host "PowerShell tools: clean"
+
+      - name: Doctrine integrity (entry points + cross-references resolve)
+        shell: pwsh
+        run: |
+          $required = @(
+            'playbooks/start.md','playbooks/compose-fleet.md','playbooks/run-a-wave.md',
+            'playbooks/sync-and-update.md','playbooks/incident-log.md',
+            'tools/aflek-sync.ps1','tools/aflek-selftest.ps1','tools/wave-preflight.ps1',
+            'tools/fleet-status.ps1','tools/fleet-console.html',
+            'templates/wave-plan.template.md','templates/worker-report.template.md',
+            'adapters/cursor.md','adapters/gemini.md','adapters/copilot.md','FLEET-VERSION'
+          )
+          $missing = $required | Where-Object { -not (Test-Path $_) }
+          if ($missing) { $missing | ForEach-Object { Write-Host "MISSING: $_" }; throw "$($missing.Count) required doctrine file(s) missing" }
+          Write-Host "All $($required.Count) required doctrine files present"
+
+      - name: No accidental secrets
+        shell: pwsh
+        run: |
+          $hits = Select-String -Path (Get-ChildItem -Recurse -File -Include *.ps1,*.md,*.yml).FullName `
+            -Pattern 'ghp_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}' -ErrorAction SilentlyContinue
+          if ($hits) { $hits | ForEach-Object { Write-Host $_.Path }; throw "Possible secret committed" }
+          Write-Host "No secret patterns found"
