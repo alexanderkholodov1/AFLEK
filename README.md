@@ -80,12 +80,12 @@ aflek/
 │                       changelog.d, STATUS board, work-package + spec templates
 ├─ personas/            reviewer personas (code, security, silent-failure, docs) — harness-neutral
 ├─ adapters/            per-provider operating notes + TEMPLATE.md to add any new one
-├─ playbooks/           bootstrap, adopt-existing-repo, compose-fleet, run-a-wave,
-│                       sync-and-update, phase-audit, learning-loop, incident-log,
-│                       upgrade-kit-version, incident
-├─ tools/               aflek-sync.ps1 (keeps adopters in sync with the kit) ·
-│                       fleet-status.ps1 (live visibility board: roster, PRs, quota) ·
-│                       fleet-console.html (edit a proposed wave plan, quota-free)
+├─ playbooks/           start (the "empieza" flow), compose-fleet, run-a-wave, sync-and-update,
+│                       bootstrap, adopt-existing-repo, phase-audit, learning-loop,
+│                       incident-log, upgrade-kit-version, incident
+├─ tools/               aflek-selftest.ps1 (ecosystem self-review) · aflek-sync.ps1 (auto-update
+│                       from the kit) · wave-preflight.ps1 (the fan-out gate) ·
+│                       fleet-status.ps1 (live board) · fleet-console.html (edit a plan, quota-free)
 └─ docs/                status board, build history, research landscape
 ```
 
