@@ -31,8 +31,19 @@ function Info($m) { Write-Host "  $m" }
 function Chg($m)  { Write-Host "  ~ $m" -ForegroundColor Yellow }
 function Ok($m)   { Write-Host "  + $m" -ForegroundColor Green }
 
-# Resolve the kit clone: -Kit, else $env:AFLEK_KIT, else the dir this script lives in.
-if (-not $Kit) { $Kit = if ($env:AFLEK_KIT) { $env:AFLEK_KIT } else { Split-Path (Split-Path $PSCommandPath -Parent) -Parent } }
+# Resolve the kit clone: -Kit, else $env:AFLEK_KIT, else the script's own root — BUT if this script
+# is itself a materialised .aflek/ copy, comparing it to itself is meaningless: demand AFLEK_KIT.
+if (-not $Kit) { $Kit = $env:AFLEK_KIT }
+if (-not $Kit) {
+  $selfRoot = Split-Path (Split-Path $PSCommandPath -Parent) -Parent
+  if ($selfRoot -match '[\\/]\.aflek$') {
+    Write-Host "AFLEK_KIT is not set. This script is running from a materialised .aflek/ snapshot;" -ForegroundColor Red
+    Write-Host "set AFLEK_KIT to the kit clone path (one-time per machine), e.g.:" -ForegroundColor Red
+    Write-Host '  [Environment]::SetEnvironmentVariable("AFLEK_KIT","C:\My Files\fleet","User")' -ForegroundColor DarkGray
+    exit 2
+  }
+  $Kit = $selfRoot
+}
 $Project = (Resolve-Path $Project).Path
 if (-not (Test-Path (Join-Path $Kit 'FLEET-VERSION'))) { Write-Host "Not an AFLEK kit: $Kit" -ForegroundColor Red; exit 2 }
 

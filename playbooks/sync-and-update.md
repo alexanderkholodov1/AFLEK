@@ -73,6 +73,16 @@ orchestrator runs the full sync (one command) as the first act of the session. P
 the hook over a full auto-sync so the working tree never changes silently on open; the full sync
 is a deliberate, reviewable commit.
 
+**One-time per machine:** the hook runs the `.aflek/` *copy* of the script, so it needs a pointer
+to the real kit clone. Set it once (like the kit clone itself):
+
+```powershell
+[Environment]::SetEnvironmentVariable("AFLEK_KIT", "C:\My Files\fleet", "User")
+```
+
+Every project on the machine then syncs against that one kit clone. Without it, the script stops
+with a clear error instead of silently comparing the snapshot to itself.
+
 ## 5. Updating doctrine (the loop)
 
 1. Edit the **kit** (never a project's `.aflek/`, never the overlay's old copies).
