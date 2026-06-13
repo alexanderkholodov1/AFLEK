@@ -84,7 +84,8 @@ aflek/
 │                       sync-and-update, phase-audit, learning-loop, incident-log,
 │                       upgrade-kit-version, incident
 ├─ tools/               aflek-sync.ps1 (keeps adopters in sync with the kit) ·
-│                       fleet-status.ps1 (live visibility board: roster, PRs, quota)
+│                       fleet-status.ps1 (live visibility board: roster, PRs, quota) ·
+│                       fleet-console.html (edit a proposed wave plan, quota-free)
 └─ docs/                status board, build history, research landscape
 ```
 
