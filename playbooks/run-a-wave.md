@@ -1,11 +1,15 @@
 # Playbook — run a wave
 
-> The orchestrator (Adjutant) loop for one wave of parallel agent work. A wave is 3–5 work
-> packages in **disjoint lanes**, executed on cloud surfaces, landing as PRs. Done when every
-> WP's PR is merged or explicitly parked, and the status board reflects it.
+> The orchestrator (Adjutant) loop for one wave of parallel agent work, **after the fleet has been
+> composed for the milestone** (`compose-fleet.md`). A wave is the execution of a composed plan in
+> **disjoint lanes** on cloud surfaces, landing as **one PR per milestone**. Done when the PR is
+> merged or explicitly parked and the status board reflects it.
 
 ## Preconditions
 
+- [ ] **`compose-fleet.md` has run and the maintainer approved the wave plan** (live roster, task
+      tier, composed tree, quota estimate). The wave executes an approved plan — it never invents
+      structure on the fly.
 - [ ] Contracts the wave depends on are **merged** (contracts-first rule) — never fan out on
       top of an unmerged foundation.
 - [ ] Each WP passes the completeness test (work-package.md authoring rules).

@@ -80,8 +80,9 @@ aflek/
 │                       changelog.d, STATUS board, work-package + spec templates
 ├─ personas/            reviewer personas (code, security, silent-failure, docs) — harness-neutral
 ├─ adapters/            per-provider operating notes + TEMPLATE.md to add any new one
-├─ playbooks/           bootstrap, adopt-existing-repo, run-a-wave, phase-audit,
-│                       learning-loop, upgrade-kit-version, incident
+├─ playbooks/           bootstrap, adopt-existing-repo, compose-fleet, run-a-wave,
+│                       phase-audit, learning-loop, incident-log, upgrade-kit-version, incident
+├─ tools/               fleet-status.ps1 — the live visibility board (roster health, PRs, quota)
 └─ docs/                status board, build history, research landscape
 ```
 
